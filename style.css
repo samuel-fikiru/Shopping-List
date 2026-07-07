@@ -105,10 +105,9 @@ input {
     justify-content: space-between;
 }
 
-
-
 .things-to-buy {
     padding-left: 20px;
+    font-size: 14px;
     font-family: sans-serif;
     font-weight: 200;
     color: rgba(0, 0, 0, 0.5);
@@ -116,17 +115,26 @@ input {
 
 .icons-container {
     padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 17px;
 }
 
-.icons,
-.delete-icon {
+.drag-icon,
+.delete-icon, .edit-icon {
     width: 20px;
-    margin-right: 5px;
     opacity: 0.5;
 }
 
-.delete-icon {
-    width: 18px;
+.edit-icon {
+    width: 16px;
+}
+
+.drag-icon{
+    width: 25px;
+    opacity: 0.45;
 }
 
 .clear-container {
