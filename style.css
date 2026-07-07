@@ -78,6 +78,7 @@ input {
     align-items: center;
     padding-bottom: 20px;
 }
+
 .filtering-container {
     padding: 10px;
     width: 100%;
@@ -91,6 +92,7 @@ input {
     margin-right: 5px;
     color: rgba(0, 0, 0, 0.7);
 }
+
 .shopping-list-container {
     height: 40px;
     width: 93%;
@@ -125,4 +127,18 @@ input {
 
 .delete-icon {
     width: 18px;
+}
+
+.clear-container {
+    width: 100%;
+    padding-top: 15px;
+    padding-left: 30px;
+}
+
+.clear-all-btn,
+.clear-completed-btn {
+    border: none;
+    background-color: white;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.5);
 }
