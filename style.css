@@ -43,7 +43,7 @@ p {
     margin-bottom: 25px;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 28px;
 }
 
 input {
@@ -52,6 +52,7 @@ input {
     height: 30px;
     flex: 1;
     padding-left: 10px;
+    background-color: rgb(249, 246, 250);
 
 }
 
@@ -60,6 +61,8 @@ input {
     height: 32px;
     border-radius: 2px;
     width: 60px;
+    background-color: rgb(249, 246, 250);
+
 }
 
 .body-container {
