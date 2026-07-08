@@ -85,11 +85,12 @@ p {
     flex-direction: column;
     align-items: center;
     padding-bottom: 20px;
+
 }
 
 .filtering-container {
     padding: 10px;
-    width: 100%;
+    width: 96%;
     margin-left: 20px;
 }
 
@@ -103,8 +104,13 @@ p {
     font-family: "Montserrat", sans-serif;
 
 }
-
-.shopping-list-container {
+.shopping-list-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;}
+.shopping-row-container {
     height: 40px;
     width: 93%;
     background-color: rgb(247, 247, 247);
@@ -122,15 +128,12 @@ p {
     margin-right: 8px;
     border: 1px solid rgb(107, 102, 102);
     accent-color: rgb(68, 99, 236);
-
 }
 
 .things-to-buy {
-    padding-left: 1px;
-    /* size */
     font-size: 14px;
     font-family: sans-serif;
-    font-weight: 200;
+    font-weight: 300;
     flex: 1;
     font-family: "Montserrat", sans-serif;
 
@@ -164,9 +167,8 @@ p {
 }
 
 .clear-container {
-    width: 100%;
+    width: 95%;
     padding-top: 15px;
-    padding-left: 30px;
 }
 
 .clear-all-btn,
