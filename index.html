@@ -1,74 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Shopping List</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
+  <body>
     <div class="full-container">
-        <div class="header-container">
-            <p class="title-text">
-                SHOPPING LIST
-            </p>
-            <div class="add-list-container">
-                <input type="text" placeholder="Write your shopping list here..." class="list-input">
-                <button class="add-btn js-add-btn">
-                    ADD
-                </button>
-            </div>
+      <div class="header-container">
+        <p class="title-text">SHOPPING LIST</p>
+        <div class="add-list-container">
+          <input
+            type="text"
+            placeholder="Write your shopping list here..."
+            class="list-input"
+          />
+          <button class="add-btn js-add-btn">ADD</button>
         </div>
-        <div class="body-container">
-            <div class="filtering-container">
-                <button class="filter">All</button>
-                <button class="filter">Bought</button>
-                <button class="filter">Not Bought</button>
-            </div>
-            <div class="shopping-list-container js-shopping-list-container">
-            <div class="shopping-row-container">
-                <input type="checkbox" class="checkbox">
-                <p class="things-to-buy">Shopping List</p>
-                <div class="icons-container">
-                    <img class="drag-icon" src="icons/drag.png" alt="">
-                    <img class="edit-icon" src="icons/edit.png" alt="">
-                    <img class="delete-icon" src="icons/trash.png" alt="">
-                </div>
-            </div>
-            <div class="shopping-row-container">
-                <input type="checkbox" class="checkbox">
-                <p class="things-to-buy">Buy Shoes</p>
-                <div class="icons-container">
-                    <img class="drag-icon" src="icons/drag.png" alt="">
-                    <img class="edit-icon" src="icons/edit.png" alt="">
-                    <img class="delete-icon" src="icons/trash.png" alt="">
-                </div>
-            </div>
-            <div class="shopping-row-container">
-                <input type="checkbox" class="checkbox">
-                <p class="things-to-buy">Buy Throuser</p>
-                <div class="icons-container">
-                    <img class="drag-icon" src="icons/drag.png" alt="">
-                    <img class="edit-icon" src="icons/edit.png" alt="">
-                    <img class="delete-icon" src="icons/trash.png" alt="">
-                </div>
-            </div>                
-            </div>
-
-            <div class="clear-container">
-                <button class="clear-all-btn">Clear All</button>
-                <button class="clear-completed-btn">Clear Completed</button>
-            </div>
+      </div>
+      <div class="body-container">
+        <div class="filtering-container">
+          <button class="filter">All</button>
+          <button class="filter">Bought</button>
+          <button class="filter">Not Bought</button>
         </div>
+        <div class="shopping-list-container js-shopping-list-container"></div>
 
+        <div class="clear-container">
+          <button class="clear-all-btn">Clear All</button>
+          <button class="clear-completed-btn">Clear Completed</button>
+        </div>
+      </div>
     </div>
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
