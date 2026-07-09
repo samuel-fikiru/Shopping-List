@@ -1,182 +1,201 @@
 body {
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(247, 247, 247);
-    font-family: "Montserrat", sans-serif;
-    padding-bottom: 1000px;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(247, 247, 247);
+  font-family: "Montserrat", sans-serif;
+  padding-bottom: 1000px;
 }
 
 p {
-    margin: 0;
-    font-family: "Montserrat", sans-serif;
-
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
 .full-container {
-    width: 70%;
-    margin-top: 100px;
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  width: 70%;
+  margin-top: 100px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .header-container {
-    width: 100%;
-    height: 180px;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    background: #28d4f7;
-    background: linear-gradient(90deg, rgba(40, 212, 247, 0.99) 0%, rgba(14, 20, 196, 1) 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 180px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background: #28d4f7;
+  background: linear-gradient(
+    90deg,
+    rgba(40, 212, 247, 0.99) 0%,
+    rgba(14, 20, 196, 1) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .add-list-container {
-    width: 80%;
-    display: flex;
-    column-gap: 20px;
+  width: 80%;
+  display: flex;
+  column-gap: 20px;
 }
 
 .title-text {
-    color: white;
-    margin-bottom: 25px;
-    font-weight: 700;
-    font-size: 26px;
+  color: white;
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 26px;
 }
 
 .list-input {
-    border: none;
-    border-radius: 6px;
-    height: 32px;
-    flex: 1;
-    padding-left: 20px;
-    background-color: rgb(247, 247, 247);
+  border: none;
+  border-radius: 6px;
+  height: 32px;
+  flex: 1;
+  padding-left: 20px;
+  background-color: rgb(247, 247, 247);
 }
 
 .list-input:focus {
-    outline: none;
+  outline: none;
 }
 
 .add-btn {
-    border: none;
-    font-weight: bolder;
-    color: rgb(82, 81, 81);
-    height: 33px;
-    border-radius: 5px;
-    width: 60px;
-    background-color: rgb(247, 247, 247);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    font-family: "Montserrat", sans-serif;
-
+  border: none;
+  font-weight: bolder;
+  color: rgb(82, 81, 81);
+  height: 33px;
+  border-radius: 5px;
+  width: 60px;
+  background-color: rgb(247, 247, 247);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
 }
 
-
 .body-container {
-    background-color: white;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 20px;
-
+  background-color: white;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
 }
 
 .filtering-container {
-    padding: 10px;
-    width: 96%;
-    margin-left: 20px;
+  padding: 10px;
+  width: 96%;
+  margin-left: 20px;
 }
 
 .filter {
-    border: none;
-    padding: 5px 8px;
-    border-radius: 5px;
-    margin-right: 5px;
-    color: rgba(0, 0, 0, 0.5);
-    font-weight: bold;
-    font-family: "Montserrat", sans-serif;
-
+  border: none;
+  padding: 5px 8px;
+  border-radius: 5px;
+  margin-right: 5px;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
 }
-.shopping-list-container{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;}
+.shopping-list-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
 .shopping-row-container {
-    height: 40px;
-    width: 93%;
-    background-color: rgb(247, 247, 247);
-    margin-top: 15px;
-    border-radius: 2px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 5px;
+  height: 40px;
+  width: 93%;
+  background-color: rgb(247, 247, 247);
+  margin-top: 15px;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5px;
 }
 
 .checkbox {
-    height: 20px;
-    margin-right: 8px;
-    border: 1px solid rgb(107, 102, 102);
-    accent-color: rgb(68, 99, 236);
+  height: 20px;
+  margin-right: 8px;
+  border: 1px solid rgb(107, 102, 102);
+  accent-color: rgb(68, 99, 236);
 }
 
 .things-to-buy {
-    font-size: 14px;
-    font-family: sans-serif;
-    font-weight: 300;
-    flex: 1;
-    font-family: "Montserrat", sans-serif;
-
+  font-size: 14px;
+  font-family: sans-serif;
+  font-weight: 300;
+  flex: 1;
+  font-family: "Montserrat", sans-serif;
 }
 
 .icons-container {
-    padding-right: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    column-gap: 17px;
-    width: 100px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 17px;
+  width: 100px;
 }
 
 .drag-icon,
 .delete-icon,
 .edit-icon {
-    width: 20px;
-    opacity: 0.5;
-    cursor: pointer;
+  width: 20px;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .edit-icon {
-    width: 16px;
+  width: 16px;
 }
 
 .drag-icon {
-    width: 25px;
-    opacity: 0.45;
+  width: 25px;
+  opacity: 0.45;
 }
 
 .clear-container {
-    width: 95%;
-    padding-top: 15px;
+  width: 95%;
+  padding-top: 15px;
 }
 
 .clear-all-btn,
 .clear-completed-btn {
-    border: none;
-    background-color: white;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.5);
-    font-family: "Montserrat", sans-serif;
+  border: none;
+  background-color: white;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Montserrat", sans-serif;
+}
+.no-item-container {
+  background: #28d4f7;
+  background: linear-gradient(
+    90deg,
+    rgba(40, 212, 247, 0.99) 0%,
+    rgba(14, 20, 196, 1) 100%
+  );
+  width: 95%;
+  height: 30px;
+  border-radius: 5px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.no-item-text {
+  font-weight: 600;
+  color: white;
+  font-size: 13px;
 }
