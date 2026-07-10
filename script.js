@@ -15,28 +15,24 @@ const shoppingListContainer = document.querySelector(
 );
 const noItemContainer = document.querySelector(".no-item-container");
 const bodyContainer = document.querySelector(".js-body-container");
-const addButton = document.querySelector('.js-add-btn');
-const inputBar = document.querySelector('.list-input');
-
+const addButton = document.querySelector(".js-add-btn");
+const inputBar = document.querySelector(".list-input");
 
 renderNoItem();
 renderShoppingList();
 
-addButton.addEventListener('click', ()=>{
-  console.log(inputBar.value);
+addButton.addEventListener("click", () => {
+  addItem();
+  renderShoppingList();
+  inputBar.value = '';
+});
+
+function addItem() {
   const newObj = {
-    itemName : `${inputBar.value}`
-  }
-
-})
-
-
-
-
-
-
-
-
+    itemName: `${inputBar.value}`,
+  };
+  shoppingListArray.push(newObj);
+}
 
 function renderShoppingList() {
   let code = ``;
