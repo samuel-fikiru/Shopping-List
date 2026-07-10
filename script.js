@@ -21,6 +21,13 @@ const inputBar = document.querySelector(".list-input");
 renderNoItem();
 renderShoppingList();
 
+inputBar.addEventListener('keydown', (event)=>{
+  if (event.key === 'Enter'){
+    addItem();
+    renderShoppingList();
+    inputBar.value = '';  
+  }
+})
 addButton.addEventListener("click", () => {
   addItem();
   renderShoppingList();
