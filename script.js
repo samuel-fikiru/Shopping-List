@@ -1,11 +1,11 @@
 let shoppingListArray = load() || [];
 
-
 const shoppingListContainer = document.querySelector(".js-shopping-list-container");
 const noItemContainer = document.querySelector(".no-item-container");
 const bodyContainer = document.querySelector(".js-body-container");
 const addButton = document.querySelector(".js-add-btn");
 const inputBar = document.querySelector(".list-input");
+const clearAllBtn = document.querySelector('.clear-all-btn');
 
 renderNoItem();
 renderShoppingList();
@@ -22,6 +22,12 @@ addButton.addEventListener("click", () => {
   renderShoppingList();
   inputBar.value = "";
 });
+
+clearAllBtn.addEventListener('click', ()=>{
+  completeDelete();
+  save();
+})
+
 
 function addItem() {
   const newObj = {
@@ -113,11 +119,15 @@ function deleteItem() {
   });
 }
 
-function save(){
-  localStorage.setItem('shoppingListArray', JSON.stringify(shoppingListArray));
+function save() {
+  localStorage.setItem("shoppingListArray", JSON.stringify(shoppingListArray));
 }
 
-function load(){
-  const data = localStorage.getItem('shoppingListArray');
+function load() {
+  const data = localStorage.getItem("shoppingListArray");
   return JSON.parse(data);
+}
+
+function completeDelete(){
+  localStorage.clear();
 }
