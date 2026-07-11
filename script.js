@@ -1,17 +1,16 @@
-const shoppingListArray = [
+let shoppingListArray = [
   {
     itemName: "Shoes",
     id: 0,
   },
   {
-    itemName: "Shoes",
+    itemName: "trouser",
     id: 1,
   },
   {
-    itemName: "Shoes",
+    itemName: "pen",
     id: 2,
   },
-  
 ];
 
 const shoppingListContainer = document.querySelector(".js-shopping-list-container");
@@ -39,12 +38,13 @@ addButton.addEventListener("click", () => {
 function addItem() {
   const newObj = {
     itemName: `${inputBar.value}`,
-    id: Date.now(),
+    id: shoppingListArray.length,
   };
   shoppingListArray.push(newObj);
 }
 
 function renderShoppingList() {
+  shoppingListContainer.innerHTML = "";
   shoppingListArray.forEach((item) => {
     const itemName = item.itemName;
     const container = document.createElement("div");
@@ -87,6 +87,7 @@ function renderShoppingList() {
     container.appendChild(subContainer);
     shoppingListContainer.appendChild(container);
   });
+  deleteItem();
 }
 
 function renderNoItem() {
@@ -98,7 +99,26 @@ function renderNoItem() {
   container.appendChild(p);
 
   if (shoppingListArray.length < 1) {
-    bodyContainer.innerHTML='';
+    bodyContainer.innerHTML = "";
     bodyContainer.appendChild(container);
   }
+}
+
+deleteItem();
+function deleteItem() {
+  renderNoItem();
+  const deleteButton = document.querySelectorAll(".delete-icon");
+
+  deleteButton.forEach((button) => {
+    button.addEventListener("click", () => {
+      const buttonId = Number(button.dataset.id);
+
+      const newArray = shoppingListArray.filter((item) => {
+        return item.id != buttonId;
+      });
+
+      shoppingListArray = newArray;
+      renderShoppingList();
+    });
+  });
 }
