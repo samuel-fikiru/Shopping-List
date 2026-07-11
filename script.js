@@ -1,17 +1,5 @@
-let shoppingListArray = [
-  {
-    itemName: "Shoes",
-    id: 0,
-  },
-  {
-    itemName: "trouser",
-    id: 1,
-  },
-  {
-    itemName: "pen",
-    id: 2,
-  },
-];
+let shoppingListArray = load() || [];
+
 
 const shoppingListContainer = document.querySelector(".js-shopping-list-container");
 const noItemContainer = document.querySelector(".no-item-container");
@@ -41,6 +29,7 @@ function addItem() {
     id: shoppingListArray.length,
   };
   shoppingListArray.push(newObj);
+  save();
 }
 
 function renderShoppingList() {
@@ -118,7 +107,17 @@ function deleteItem() {
       });
 
       shoppingListArray = newArray;
+      save();
       renderShoppingList();
     });
   });
+}
+
+function save(){
+  localStorage.setItem('shoppingListArray', JSON.stringify(shoppingListArray));
+}
+
+function load(){
+  const data = localStorage.getItem('shoppingListArray');
+  return JSON.parse(data);
 }
