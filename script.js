@@ -1,5 +1,4 @@
 const shoppingListArray = [
-  /*
   {
     itemName: "Shoes",
     id: 0,
@@ -12,7 +11,7 @@ const shoppingListArray = [
     itemName: "Shoes",
     id: 2,
   },
-  */
+  
 ];
 
 const shoppingListContainer = document.querySelector(".js-shopping-list-container");
@@ -82,6 +81,7 @@ function renderShoppingList() {
       img.className = data.class;
       img.src = data.src;
       img.alt = data.alt;
+      img.dataset.id = item.id;
       subContainer.appendChild(img);
     });
     container.appendChild(subContainer);
