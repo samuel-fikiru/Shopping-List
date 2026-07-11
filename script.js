@@ -46,23 +46,6 @@ function addItem() {
 }
 
 function renderShoppingList() {
-  /*
-  let code = ``;
-  
-  shoppingListArray.forEach((item) => {
-    const itemName = item.itemName;
-    code += `
-    <div class="shopping-row-container">
-        <input type="checkbox" class="checkbox">
-        <p class="things-to-buy">${itemName}</p>
-        <div class="icons-container">
-            <img class="drag-icon" src="icons/drag.png" alt="">
-            <img class="edit-icon" src="icons/edit.png" alt="">
-            <img class="delete-icon" src="icons/trash.png" alt="">
-        </div>
-    </div>
-    `;
-    */
   shoppingListArray.forEach((item) => {
     const itemName = item.itemName;
     const container = document.createElement("div");
@@ -107,15 +90,14 @@ function renderShoppingList() {
 }
 
 function renderNoItem() {
-  const emptyCode = `
-    <div class="no-item-container js-no-item-container">
-        <p class="no-item-text">There are no items, please add an item</p>
-    </div>
- `;
-  let code = ``;
+  const container = document.createElement("div");
+  container.className = "no-item-container js-no-item-container";
+  const p = document.createElement("p");
+  p.className = "no-item-text";
+  p.textContent = "There are no items, please add an item";
+  container.appendChild(p);
+
   if (shoppingListArray.length < 1) {
-    console.log(true);
-    code = emptyCode;
-    bodyContainer.innerHTML = code;
+    bodyContainer.appendChild(container);
   }
 }
