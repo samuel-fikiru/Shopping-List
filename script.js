@@ -1,4 +1,5 @@
 const shoppingListArray = [
+  /*
   {
     itemName: "Shoes",
     id: 0,
@@ -11,11 +12,10 @@ const shoppingListArray = [
     itemName: "Shoes",
     id: 2,
   },
+  */
 ];
 
-const shoppingListContainer = document.querySelector(
-  ".js-shopping-list-container",
-);
+const shoppingListContainer = document.querySelector(".js-shopping-list-container");
 const noItemContainer = document.querySelector(".no-item-container");
 const bodyContainer = document.querySelector(".js-body-container");
 const addButton = document.querySelector(".js-add-btn");
@@ -69,12 +69,12 @@ function renderShoppingList() {
       {
         class: "edit-icon",
         src: "icons/edit.png",
-        alt: "EDIT",
+        alt: "Edit",
       },
       {
         class: "delete-icon",
         src: "icons/trash.png",
-        alt: "TRASH",
+        alt: "Trash",
       },
     ];
     imgArray.forEach((data) => {
@@ -98,6 +98,7 @@ function renderNoItem() {
   container.appendChild(p);
 
   if (shoppingListArray.length < 1) {
+    bodyContainer.innerHTML='';
     bodyContainer.appendChild(container);
   }
 }
