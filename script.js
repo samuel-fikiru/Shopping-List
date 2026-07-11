@@ -25,7 +25,7 @@ addButton.addEventListener("click", () => {
 
 clearAllBtn.addEventListener('click', ()=>{
   completeDelete();
-  save();
+  renderShoppingList();
 })
 
 
