@@ -13,18 +13,19 @@ renderShoppingList();
 inputBar.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     addItem();
-    renderShoppingList();
     inputBar.value = "";
   }
 });
 addButton.addEventListener("click", () => {
   addItem();
-  renderShoppingList();
   inputBar.value = "";
 });
 
 clearAllBtn.addEventListener('click', ()=>{
   completeDelete();
+  save();
+  console.log(shoppingListArray);
+
   renderShoppingList();
 })
 
@@ -36,10 +37,11 @@ function addItem() {
   };
   shoppingListArray.push(newObj);
   save();
+  renderShoppingList();
 }
 
 function renderShoppingList() {
-  shoppingListContainer.innerHTML = "";
+  shoppingListContainer.innerHTML='';
   shoppingListArray.forEach((item) => {
     const itemName = item.itemName;
     const container = document.createElement("div");
@@ -129,5 +131,5 @@ function load() {
 }
 
 function completeDelete(){
-  localStorage.clear();
+  shoppingListArray.length = 0;
 }
