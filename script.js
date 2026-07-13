@@ -32,7 +32,7 @@ function addItem() {
   const newObj = {
     itemName: `${inputBar.value}`,
     id: shoppingListArray.length,
-    checkStatus:0
+    checkStatus: 0,
   };
   shoppingListArray.push(newObj);
   console.log(shoppingListArray);
@@ -89,7 +89,7 @@ function renderShoppingList() {
     shoppingListContainer.appendChild(container);
   });
   deleteItem();
-  lineThrough();
+  updateCheckedStatus();
 }
 
 function render() {
@@ -156,24 +156,43 @@ function hideControlForShoopingList() {
   noItemMsgContainer.style.display = "none";
 }
 
-function lineThrough() {
+function updateCheckedStatus() {
   const checkbox = document.querySelectorAll(".js-checkbox");
-  const buyItems = document.querySelectorAll(".js-things-to-buy");
   checkbox.forEach((box) => {
     box.addEventListener("change", (event) => {
+      const clickedBoxId = box.dataset.id;
       if (event.target.checked) {
-        buyItems.forEach((item) => {
-          if (item.dataset.id === box.dataset.id) {
-            item.classList.add("bought");
+        shoppingListArray.forEach((item) => {
+          if (item.id === clickedBoxId) {
+            item.checkStatus = 1;
           }
         });
       } else {
-        buyItems.forEach((item) => {
-          if (item.dataset.id === box.dataset.id) {
-            item.classList.remove("bought");
+        shoppingListArray.forEach((item) => {
+          if (item.id === clickedBoxId) {
+            item.checkStatus = 0;
           }
         });
       }
     });
   });
+  save();
+  renderCheck();
+}
+
+function renderCheck() {
+  const buyItems = document.querySelectorAll(".js-things-to-buy");
+  shoppingListArray.forEach((itemObj)=>{
+    console.log(itemObj.checkStatus);
+  })
+  /*
+        buyItems.forEach((item) => {
+          const itemId = item.dataset.id;
+          if (itemId === clickedBoxId) {
+            item.classList.add("bought");
+
+        buyItems.forEach((item) => {
+          if (item.dataset.id === clickedBoxId) {
+            item.classList.remove("bought");
+          */
 }
