@@ -32,6 +32,7 @@ function addItem() {
   const newObj = {
     itemName: `${inputBar.value}`,
     id: shoppingListArray.length,
+    checkStatus:0
   };
   shoppingListArray.push(newObj);
   console.log(shoppingListArray);
@@ -88,6 +89,7 @@ function renderShoppingList() {
     shoppingListContainer.appendChild(container);
   });
   deleteItem();
+  lineThrough();
 }
 
 function render() {
@@ -154,25 +156,24 @@ function hideControlForShoopingList() {
   noItemMsgContainer.style.display = "none";
 }
 
-const checkbox = document.querySelectorAll(".js-checkbox");
-const buyItems = document.querySelectorAll(".js-things-to-buy");
-checkbox.forEach((box) => {
-  box.addEventListener("change", (event) => {
-    if (event.target.checked) {
-      console.log(box.dataset.id);
-      buyItems.forEach((item) => {
-        if (item.dataset.id === box.dataset.id) {
-          console.log(item.innerText);
-          item.classList.add("bought");
-        }
-      });
-    }else{
-      buyItems.forEach((item) => {
-        if (item.dataset.id === box.dataset.id) {
-          console.log(item.innerText);
-          item.classList.remove("bought");
-        }
-      });
-    }
+function lineThrough() {
+  const checkbox = document.querySelectorAll(".js-checkbox");
+  const buyItems = document.querySelectorAll(".js-things-to-buy");
+  checkbox.forEach((box) => {
+    box.addEventListener("change", (event) => {
+      if (event.target.checked) {
+        buyItems.forEach((item) => {
+          if (item.dataset.id === box.dataset.id) {
+            item.classList.add("bought");
+          }
+        });
+      } else {
+        buyItems.forEach((item) => {
+          if (item.dataset.id === box.dataset.id) {
+            item.classList.remove("bought");
+          }
+        });
+      }
+    });
   });
-});
+}
