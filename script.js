@@ -166,6 +166,13 @@ checkbox.forEach((box) => {
           item.classList.add("bought");
         }
       });
+    }else{
+      buyItems.forEach((item) => {
+        if (item.dataset.id === box.dataset.id) {
+          console.log(item.innerText);
+          item.classList.remove("bought");
+        }
+      });
     }
   });
 });
