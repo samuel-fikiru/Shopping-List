@@ -47,12 +47,14 @@ function renderShoppingList() {
     const itemName = item.itemName;
     const container = document.createElement("div");
     container.className = "shopping-row-container";
-    const input = document.createElement("input");
-    input.type = "checkbox";
-    input.className = "checkbox";
-    container.appendChild(input);
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "checkbox js-checkbox";
+    checkbox.dataset.id = item.id;
+    container.appendChild(checkbox);
     const p = document.createElement("p");
-    p.className = "things-to-buy";
+    p.className = "things-to-buy js-things-to-buy";
+    p.dataset.id = item.id;
     p.textContent = itemName;
     container.appendChild(p);
     const subContainer = document.createElement("div");
@@ -151,3 +153,19 @@ function hideControlForShoopingList() {
   clearButtonsContainer.style.display = "block";
   noItemMsgContainer.style.display = "none";
 }
+
+const checkbox = document.querySelectorAll(".js-checkbox");
+const buyItems = document.querySelectorAll(".js-things-to-buy");
+checkbox.forEach((box) => {
+  box.addEventListener("change", (event) => {
+    if (event.target.checked) {
+      console.log(box.dataset.id);
+      buyItems.forEach((item) => {
+        if (item.dataset.id === box.dataset.id) {
+          console.log(item.innerText);
+          item.classList.add("bought");
+        }
+      });
+    }
+  });
+});

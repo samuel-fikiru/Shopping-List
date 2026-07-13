@@ -200,3 +200,6 @@ p {
   color: white;
   font-size: 13px;
 }
+.bought{
+  text-decoration : line-through;
+}
