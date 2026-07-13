@@ -101,9 +101,13 @@ p {
   padding: 5px 8px;
   border-radius: 5px;
   margin-right: 5px;
-  color: rgba(0, 0, 0, 0.5);
-  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5); 
+  font-weight: bolder;
   font-family: "Montserrat", sans-serif;
+}
+.clickedFilter{
+  background-color: rgba(0, 0, 0, 0.5); 
+  color:#EFEFEF;
 }
 .shopping-list-container {
   width: 100%;
