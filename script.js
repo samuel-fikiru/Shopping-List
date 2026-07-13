@@ -95,8 +95,9 @@ function renderShoppingList() {
 function render() {
   if (shoppingListArray.length < 1) {
     renderNoItem();
-  } else if (shoppingListArray.length > 0) {
+  } else {
     renderShoppingList();
+    renderCheck();
   }
 }
 
@@ -160,7 +161,7 @@ function updateCheckedStatus() {
   const checkbox = document.querySelectorAll(".js-checkbox");
   checkbox.forEach((box) => {
     box.addEventListener("change", (event) => {
-      const clickedBoxId = box.dataset.id;
+      const clickedBoxId = Number(box.dataset.id);
       if (event.target.checked) {
         shoppingListArray.forEach((item) => {
           if (item.id === clickedBoxId) {
@@ -174,25 +175,39 @@ function updateCheckedStatus() {
           }
         });
       }
+      save();
+      renderCheck();
     });
   });
-  save();
-  renderCheck();
 }
 
 function renderCheck() {
   const buyItems = document.querySelectorAll(".js-things-to-buy");
-  shoppingListArray.forEach((itemObj)=>{
-    console.log(itemObj.checkStatus);
-  })
-  /*
-        buyItems.forEach((item) => {
-          const itemId = item.dataset.id;
-          if (itemId === clickedBoxId) {
-            item.classList.add("bought");
+  const checkbox = document.querySelectorAll(".js-checkbox");
 
-        buyItems.forEach((item) => {
-          if (item.dataset.id === clickedBoxId) {
-            item.classList.remove("bought");
-          */
+  shoppingListArray.forEach((itemObj) => {
+    if (itemObj.checkStatus) {
+      buyItems.forEach((item) => {
+        const itemId = Number(item.dataset.id);
+        if (itemId === itemObj.id) {
+          item.classList.add("bought");
+        }
+      });
+      checkbox.forEach((box) => {
+        const boxId = Number(box.dataset.id);
+
+        if (itemObj.id === boxId && !box.checked) {
+          box.checked = true;
+        }
+      });
+    } else {
+      buyItems.forEach((item) => {
+        const itemId = Number(item.dataset.id);
+
+        if (itemId === itemObj.id) {
+          item.classList.remove("bought");
+        }
+      });
+    }
+  });
 }
