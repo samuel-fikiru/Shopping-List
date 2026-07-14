@@ -74,8 +74,8 @@ p {
   cursor: pointer;
 }
 .save-btn{
-  color:rgb(99, 11, 11);
-  background-color: rgb(1, 237, 245);
+  color:rgb(255, 254, 254);
+  background-color: rgb(105, 8, 1);
   font-weight: bolder;
   display: none;
   
