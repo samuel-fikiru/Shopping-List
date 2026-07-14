@@ -91,6 +91,7 @@ function renderShoppingList() {
   });
   deleteItem();
   updateCheckedStatus();
+  controlFilters();
 }
 
 function render() {
@@ -182,7 +183,7 @@ function updateCheckedStatus() {
   });
 }
 
-function renderCheck() {
+function renderCheck(){
   const buyItems = document.querySelectorAll(".js-things-to-buy");
   const checkbox = document.querySelectorAll(".js-checkbox");
 
@@ -213,18 +214,15 @@ function renderCheck() {
   });
 }
 
-function renderFilter() {
+function controlFilters() {
+  const allFilterBtn = document.querySelector('.js-all-filter');
+  allFilterBtn.classList.add("clickedFilter");
   filterButtons.forEach((button) => {
-    button.classList.remove("clickedFilter");
+    button.addEventListener("click", () => {
+      filterButtons.forEach((button) => {
+        button.classList.remove("clickedFilter");
+      });
+      button.classList.add("clickedFilter");
+    });
   });
 }
-
-
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-      filterButtons.forEach((button) => {
-    button.classList.remove("clickedFilter");
-  });
-    button.classList.add("clickedFilter");
-  });
-});
