@@ -69,7 +69,7 @@ function renderShoppingList() {
         alt: "Drag",
       },
       {
-        class: "edit-icon",
+        class: "edit-icon js-edit-icon",
         src: "icons/edit.png",
         alt: "Edit",
       },
@@ -259,3 +259,17 @@ function clearBoughtOnly() {
     render();
   });
 }
+
+const editIcons = document.querySelectorAll('.js-edit-icon');
+editIcons.forEach((icon)=>{
+  icon.addEventListener('click', ()=>{
+    const iconId = Number(icon.dataset.id);
+    shoppingListArray.forEach((item)=>{
+      if (item.id === iconId){
+        console.log(item.itemName);
+        inputBar.value = item.itemName;
+        inputBar.focus();
+      }
+    })
+  })
+})
