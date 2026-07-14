@@ -98,7 +98,6 @@ p {
   }
 }
 @media (max-width: 355px){
-
   .title-text{
     font-size:30px;
     line-height: 30px;
@@ -109,6 +108,7 @@ p {
   .breaker{
     display: block;
   }
+
 }
 .body-container {
   background-color: white;
@@ -234,6 +234,16 @@ p {
   font-weight: 600;
   color: white;
   font-size: 13px;
+}
+@media(max-width:420px){
+  .no-item-text{
+    font-size: 10px;
+  }
+}
+@media(max-width:310px){
+  .no-item-text{
+  width: 120px;
+  }
 }
 .bought {
   text-decoration: line-through;
