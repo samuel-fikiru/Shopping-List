@@ -11,6 +11,7 @@ const clearAllBtn = document.querySelector(".js-clear-all-btn");
 const noItemMsgContainer = document.querySelector(".js-no-item-container");
 const filterButtons = document.querySelectorAll(".js-filter");
 const clearBoughtBtn = document.querySelector(".js-clear-bought-btn");
+
 render();
 
 inputBar.addEventListener("keydown", (event) => {
@@ -94,6 +95,7 @@ function renderShoppingList() {
   clearBoughtOnly();
   updateCheckedStatus();
   controlFilters();
+  editItem();
 }
 
 function render() {
@@ -260,29 +262,32 @@ function clearBoughtOnly() {
   });
 }
 
-const editIcons = document.querySelectorAll(".js-edit-icon");
-const saveButton = document.querySelector(".js-save-btn");
-editIcons.forEach((icon) => {
-  icon.addEventListener("click", () => {
-    const iconId = Number(icon.dataset.id);
-    shoppingListArray.forEach((item) => {
-      if (item.id === iconId) {
-        console.log(item.itemName);
-        inputBar.value = item.itemName;
-        inputBar.focus();
-        addButton.style.display = "none";
-        saveButton.style.display = "flex";
+function editItem() {
+  const editIcons = document.querySelectorAll(".js-edit-icon");
+  const saveButton = document.querySelector(".js-save-btn");
+  editIcons.forEach((icon) => {
+    icon.addEventListener("click", () => {
+      const iconId = Number(icon.dataset.id);
+      shoppingListArray.forEach((item) => {
+        if (item.id === iconId) {
+          inputBar.value = item.itemName;
+          inputBar.focus();
+          addButton.style.display = "none";
+          saveButton.style.display = "flex";
 
-        const itemIndex = Number(icon.dataset.id);
-        saveButton.addEventListener("click", () => {
-          shoppingListArray[itemIndex].itemName = inputBar.vakue;
-          save();
-          dataForFilter = shoppingListArray;
-          addButton.style.display = "flex";
-          saveButton.style.display = "none";
-          render();
-        });
-      }
+          const itemIndex = Number(icon.dataset.id);
+          saveButton.addEventListener("click", () => {
+            shoppingListArray[itemIndex].itemName = inputBar.value;
+            inputBar.value = "";
+            inputBar.focus();
+            save();
+            dataForFilter = shoppingListArray;
+            addButton.style.display = "flex";
+            saveButton.style.display = "none";
+            render();
+          });
+        }
+      });
     });
   });
-});
+}
