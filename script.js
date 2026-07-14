@@ -261,6 +261,7 @@ function clearBoughtOnly() {
 }
 
 const editIcons = document.querySelectorAll('.js-edit-icon');
+const saveButton = document.querySelector('.js-save-btn');
 editIcons.forEach((icon)=>{
   icon.addEventListener('click', ()=>{
     const iconId = Number(icon.dataset.id);
@@ -269,6 +270,8 @@ editIcons.forEach((icon)=>{
         console.log(item.itemName);
         inputBar.value = item.itemName;
         inputBar.focus();
+        addButton.style.display = 'none';
+        saveButton.style.display ='flex';
       }
     })
   })
