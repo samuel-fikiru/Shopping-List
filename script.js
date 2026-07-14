@@ -1,4 +1,5 @@
 let shoppingListArray = load() || [];
+let dataForFilter = shoppingListArray;
 
 const shoppingListContainer = document.querySelector(".js-shopping-list-container");
 const bodyContainer = document.querySelector(".js-body-container");
@@ -45,7 +46,7 @@ function renderShoppingList() {
   hideControlForShoopingList();
 
   shoppingListContainer.innerHTML = "";
-  shoppingListArray.forEach((item) => {
+  dataForFilter.forEach((item) => {
     const itemName = item.itemName;
     const container = document.createElement("div");
     container.className = "shopping-row-container";
@@ -231,17 +232,18 @@ function controlFilters() {
 
 function decideFilter(filter){
   if (filter === 'Bought'){
-    const itemList = shoppingListArray.filter((item)=>{
+    dataForFilter = shoppingListArray.filter((item)=>{
       return item.checkStatus === 1;
     });
+    render();
   }else if(filter === 'Not Bought'){
-    const itemList = shoppingListArray.filter((item)=>{
+    dataForFilter = shoppingListArray.filter((item)=>{
       return item.checkStatus === 0;
     });
+    render();
   }
   else {
-     const itemList = shoppingListArray.filter((item)=>{
-      return item.checkStatus === 1 || item.checkStatus === 0;
-    });
+     dataForFilter = shoppingListArray;
+     render();
   }
 }
