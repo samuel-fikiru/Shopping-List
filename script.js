@@ -260,19 +260,29 @@ function clearBoughtOnly() {
   });
 }
 
-const editIcons = document.querySelectorAll('.js-edit-icon');
-const saveButton = document.querySelector('.js-save-btn');
-editIcons.forEach((icon)=>{
-  icon.addEventListener('click', ()=>{
+const editIcons = document.querySelectorAll(".js-edit-icon");
+const saveButton = document.querySelector(".js-save-btn");
+editIcons.forEach((icon) => {
+  icon.addEventListener("click", () => {
     const iconId = Number(icon.dataset.id);
-    shoppingListArray.forEach((item)=>{
-      if (item.id === iconId){
+    shoppingListArray.forEach((item) => {
+      if (item.id === iconId) {
         console.log(item.itemName);
         inputBar.value = item.itemName;
         inputBar.focus();
-        addButton.style.display = 'none';
-        saveButton.style.display ='flex';
+        addButton.style.display = "none";
+        saveButton.style.display = "flex";
+
+        const itemIndex = Number(icon.dataset.id);
+        saveButton.addEventListener("click", () => {
+          shoppingListArray[itemIndex].itemName = inputBar.vakue;
+          save();
+          dataForFilter = shoppingListArray;
+          addButton.style.display = "flex";
+          saveButton.style.display = "none";
+          render();
+        });
       }
-    })
-  })
-})
+    });
+  });
+});
