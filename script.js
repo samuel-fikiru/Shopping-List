@@ -91,6 +91,7 @@ function renderShoppingList() {
     shoppingListContainer.appendChild(container);
   });
   deleteItem();
+  clearBoughtOnly();
   updateCheckedStatus();
   controlFilters();
 }
@@ -248,11 +249,13 @@ function decideFilter(filter) {
   }
 }
 
-clearBoughtBtn.addEventListener("click", () => {
-  shoppingListArray = shoppingListArray.filter((item) => {
-    return item.checkStatus === 0;
+function clearBoughtOnly() {
+  clearBoughtBtn.addEventListener("click", () => {
+    shoppingListArray = shoppingListArray.filter((item) => {
+      return item.checkStatus === 0;
+    });
+    dataForFilter = shoppingListArray;
+    save();
+    render();
   });
-  dataForFilter = shoppingListArray;
-  save();
-  render();
-});
+}
