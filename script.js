@@ -8,7 +8,7 @@ const filtersContainer = document.querySelector(".js-filtering-container");
 const clearButtonsContainer = document.querySelector(".js-clear-container");
 const clearAllBtn = document.querySelector(".clear-all-btn");
 const noItemMsgContainer = document.querySelector(".js-no-item-container");
-const filterButtons = document.querySelectorAll('js-filter');
+const filterButtons = document.querySelectorAll(".js-filter");
 
 render();
 
@@ -213,11 +213,18 @@ function renderCheck() {
   });
 }
 
+function renderFilter() {
+  filterButtons.forEach((button) => {
+    button.classList.remove("clickedFilter");
+  });
+}
 
-// clickedFilter
-console.log(filterButtons);
-filterButtons.forEach((button)=>{
-  button.addEventListener('click', ()=>{
-    button.classList.add('clickedFilter');
-  })
-})
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+      filterButtons.forEach((button) => {
+    button.classList.remove("clickedFilter");
+  });
+    button.classList.add("clickedFilter");
+  });
+});
