@@ -27,30 +27,24 @@ p {
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   background: #28d4f7;
-  background: linear-gradient(
-    90deg,
-    rgba(40, 212, 247, 0.99) 0%,
-    rgba(14, 20, 196, 1) 100%
-  );
+  background: linear-gradient(90deg, rgba(40, 212, 247, 0.99) 0%, rgba(14, 20, 196, 1) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.add-list-container {
-  width: 80%;
-  display: flex;
-  column-gap: 20px;
-}
-@media (max-width:520px)
 .title-text {
   color: white;
   margin-bottom: 25px;
   font-weight: 700;
   font-size: 26px;
 }
-
+.add-list-container {
+  width: 80%;
+  display: flex;
+  column-gap: 20px;
+}
 .list-input {
   border: none;
   border-radius: 6px;
@@ -77,9 +71,45 @@ p {
   justify-content: center;
   font-size: 15px;
   font-family: "Montserrat", sans-serif;
-  cursor:pointer;
+  cursor: pointer;
 }
+.breaker{
+  display: none;
+}
+@media (max-width: 520px) {
+  .add-list-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .list-input {
+    width: 80%;
+    padding: 6px;
+    padding-left:10px;
+  }
+  .list-input::placeholder{
+    font-size: 12px;
+  }
+  .add-btn{
+    margin-top: 10px;
+    font-size:11px;
+    width:87%;
+    height:25px;
+    margin-bottom: 15px;
+  }
+}
+@media (max-width: 355px){
 
+  .title-text{
+    font-size:30px;
+    line-height: 30px;
+    text-align: center;
+    margin-top:20px;
+    margin-bottom: 8px;
+  }
+  .breaker{
+    display: block;
+  }
+}
 .body-container {
   background-color: white;
   border-bottom-right-radius: 5px;
@@ -101,18 +131,18 @@ p {
   padding: 5px 8px;
   border-radius: 5px;
   margin-right: 5px;
-  color: rgba(0, 0, 0, 0.5); 
+  color: rgba(0, 0, 0, 0.5);
   font-weight: bolder;
   font-family: "Montserrat", sans-serif;
 }
-@media (max-width:370px){
-  .filter{
-    margin-top:8px;
+@media (max-width: 370px) {
+  .filter {
+    margin-top: 8px;
   }
 }
-.clickedFilter{
-  background-color: rgba(0, 0, 0, 0.5); 
-  color:#EFEFEF;
+.clickedFilter {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #efefef;
 }
 .shopping-list-container {
   width: 100%;
@@ -191,11 +221,7 @@ p {
 }
 .no-item-container {
   background: #28d4f7;
-  background: linear-gradient(
-    90deg,
-    rgb(42, 45, 156) 0%,
-    rgba(14, 222, 250, 0.99) 100%
-  );
+  background: linear-gradient(90deg, rgb(42, 45, 156) 0%, rgba(14, 222, 250, 0.99) 100%);
   width: 95%;
   height: 30px;
   border-radius: 5px;
@@ -209,6 +235,6 @@ p {
   color: white;
   font-size: 13px;
 }
-.bought{
-  text-decoration : line-through;
+.bought {
+  text-decoration: line-through;
 }
