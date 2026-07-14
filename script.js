@@ -219,10 +219,29 @@ function controlFilters() {
   allFilterBtn.classList.add("clickedFilter");
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
+      decideFilter(button.innerHTML);
+
       filterButtons.forEach((button) => {
         button.classList.remove("clickedFilter");
       });
       button.classList.add("clickedFilter");
     });
   });
+}
+
+function decideFilter(filter){
+  if (filter === 'Bought'){
+    const itemList = shoppingListArray.filter((item)=>{
+      return item.checkStatus === 1;
+    });
+  }else if(filter === 'Not Bought'){
+    const itemList = shoppingListArray.filter((item)=>{
+      return item.checkStatus === 0;
+    });
+  }
+  else {
+     const itemList = shoppingListArray.filter((item)=>{
+      return item.checkStatus === 1 || item.checkStatus === 0;
+    });
+  }
 }
