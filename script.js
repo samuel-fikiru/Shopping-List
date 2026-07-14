@@ -127,6 +127,7 @@ function deleteItem() {
       });
 
       shoppingListArray = newArray;
+      dataForFilter = newArray;
       save();
       render();
     });
