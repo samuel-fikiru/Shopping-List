@@ -7,10 +7,10 @@ const addButton = document.querySelector(".js-add-btn");
 const inputBar = document.querySelector(".list-input");
 const filtersContainer = document.querySelector(".js-filtering-container");
 const clearButtonsContainer = document.querySelector(".js-clear-container");
-const clearAllBtn = document.querySelector(".clear-all-btn");
+const clearAllBtn = document.querySelector(".js-clear-all-btn");
 const noItemMsgContainer = document.querySelector(".js-no-item-container");
 const filterButtons = document.querySelectorAll(".js-filter");
-
+const clearBoughtBtn = document.querySelector(".js-clear-bought-btn");
 render();
 
 inputBar.addEventListener("keydown", (event) => {
@@ -185,7 +185,7 @@ function updateCheckedStatus() {
   });
 }
 
-function renderCheck(){
+function renderCheck() {
   const buyItems = document.querySelectorAll(".js-things-to-buy");
   const checkbox = document.querySelectorAll(".js-checkbox");
 
@@ -217,7 +217,7 @@ function renderCheck(){
 }
 
 function controlFilters() {
-  const allFilterBtn = document.querySelector('.js-all-filter');
+  const allFilterBtn = document.querySelector(".js-all-filter");
   allFilterBtn.classList.add("clickedFilter");
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -231,20 +231,28 @@ function controlFilters() {
   });
 }
 
-function decideFilter(filter){
-  if (filter === 'Bought'){
-    dataForFilter = shoppingListArray.filter((item)=>{
+function decideFilter(filter) {
+  if (filter === "Bought") {
+    dataForFilter = shoppingListArray.filter((item) => {
       return item.checkStatus === 1;
     });
     render();
-  }else if(filter === 'Not Bought'){
-    dataForFilter = shoppingListArray.filter((item)=>{
+  } else if (filter === "Not Bought") {
+    dataForFilter = shoppingListArray.filter((item) => {
       return item.checkStatus === 0;
     });
     render();
-  }
-  else {
-     dataForFilter = shoppingListArray;
-     render();
+  } else {
+    dataForFilter = shoppingListArray;
+    render();
   }
 }
+
+clearBoughtBtn.addEventListener("click", () => {
+  shoppingListArray = shoppingListArray.filter((item) => {
+    return item.checkStatus === 0;
+  });
+  dataForFilter = shoppingListArray;
+  save();
+  render();
+});
