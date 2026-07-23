@@ -203,7 +203,7 @@ p {
   width: 20px;
   opacity: 0.5;
   cursor: pointer;
-  ttransition : all 0.5s ease;
+  transition : all 0.7s ease;
 }
 .drag-icon:hover,
 .edit-icon:hover,
