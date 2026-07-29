@@ -271,8 +271,8 @@ p {
 }
 
 .dragging {
-  background-color: rgb(247, 247, 247);
-  border: solid 2px rgb(30, 30, 161);
+  background-color: white;
+  border: solid 1px rgb(25, 25, 104);
   border-style: dashed;
 }
 .dragging > * {

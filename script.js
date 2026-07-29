@@ -299,7 +299,14 @@ shoppingListContainer.addEventListener('dragstart', (e)=>{
   dragItem = e.target;
   setTimeout(()=>{
     e.target.classList.add('dragging');
-  },0)
+  },0);
+
+  e.dataTransfer.setData("text/plain", "");
+  e.dataTransfer.dropeffect='move';
 })
 
-  console.log(shoppingListContainer)
+shoppingListContainer.addEventListener('dragend', (e)=>{
+  dragItem=null;
+  e.target.classList.remove('dragging');
+})
+
