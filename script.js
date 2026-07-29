@@ -294,6 +294,12 @@ function editItem() {
 }
 
 
-shoppingListContainer.addEventListener('drragstart', (e)=>{
-  
+let dragItem = null;
+shoppingListContainer.addEventListener('dragstart', (e)=>{
+  dragItem = e.target;
+  setTimeout(()=>{
+    e.target.classList.add('dragging');
+  },0)
 })
+
+  console.log(shoppingListContainer)

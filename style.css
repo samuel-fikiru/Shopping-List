@@ -203,15 +203,15 @@ p {
   width: 20px;
   opacity: 0.5;
   cursor: pointer;
-  transition : all 0.7s ease;
+  transition: all 0.7s ease;
 }
 .drag-icon:hover,
 .edit-icon:hover,
-.delete-icon:hover{
+.delete-icon:hover {
   opacity: 0.9;
 }
-.delete-icon:hover{
-  width:22px;
+.delete-icon:hover {
+  width: 22px;
 }
 .edit-icon {
   width: 16px;
@@ -268,4 +268,13 @@ p {
 }
 .bought {
   text-decoration: line-through;
+}
+
+.dragging {
+  background-color: rgb(247, 247, 247);
+  border: solid 2px rgb(30, 30, 161);
+  border-style: dashed;
+}
+.dragging > * {
+  display: none;
 }
