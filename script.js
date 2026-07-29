@@ -310,3 +310,12 @@ shoppingListContainer.addEventListener('dragend', (e)=>{
   e.target.classList.remove('dragging');
 })
 
+shoppingListContainer.addEventListener('dragover',(e)=>{
+  e.preventDefault();
+
+  const target = e.target.closest('shopping-row-container');
+  if (target && target!==dragItem){
+    const dragIndex = [...shoppingListContainer].indexOf(dragItem);
+    const targetIndex = [...shoppingListContainer].indexOf(dragItem);
+  }
+})
