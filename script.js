@@ -313,9 +313,13 @@ shoppingListContainer.addEventListener('dragend', (e)=>{
 shoppingListContainer.addEventListener('dragover',(e)=>{
   e.preventDefault();
 
-  const target = e.target.closest('shopping-row-container');
+  const target = e.target.closest('.shopping-row-container');
   if (target && target!==dragItem){
-    const dragIndex = [...shoppingListContainer].indexOf(dragItem);
-    const targetIndex = [...shoppingListContainer].indexOf(dragItem);
+    const dragIndex = [...shoppingListContainer.children].indexOf(dragItem);
+    const targetIndex = [...shoppingListContainer.children].indexOf(dragItem);
+
+    const item = targetIndex> dragIndex? target.nextSibling: target;
+
+    shoppingListContainer.insertBefore(dragItem, item)
   }
 })
