@@ -51,6 +51,7 @@ function renderShoppingList() {
     const itemName = item.itemName;
     const container = document.createElement("div");
     container.className = "shopping-row-container";
+    container.draggable='true';
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.className = "checkbox js-checkbox";
@@ -291,3 +292,8 @@ function editItem() {
     });
   });
 }
+
+
+shoppingListContainer.addEventListener('drragstart', (e)=>{
+  
+})
