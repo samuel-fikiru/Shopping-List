@@ -294,6 +294,8 @@ function editItem() {
 }
 
 
+function handleSorting(){
+
 let dragItem = null;
 shoppingListContainer.addEventListener('dragstart', (e)=>{
   dragItem = e.target;
@@ -318,8 +320,11 @@ shoppingListContainer.addEventListener('dragover',(e)=>{
     const dragIndex = [...shoppingListContainer.children].indexOf(dragItem);
     const targetIndex = [...shoppingListContainer.children].indexOf(dragItem);
 
-    const item = targetIndex> dragIndex? target.nextSibling: target;
+    const item = (targetIndex > dragIndex)? target.nextSibling : target;
 
     shoppingListContainer.insertBefore(dragItem, item)
   }
 })
+}
+
+handleSorting();
