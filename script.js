@@ -97,6 +97,7 @@ function renderShoppingList() {
   updateCheckedStatus();
   controlFilters();
   editItem();
+  handleSorting();
 }
 
 function render() {
@@ -296,7 +297,7 @@ function editItem() {
 function handleSorting() {
   let dragItem = null;
   shoppingListContainer.addEventListener("dragstart", (e) => {
-    dragItem = e.target;
+    dragItem = e.target.closest('.shopping-row-container');
     setTimeout(() => {
       e.target.classList.add("dragging");
     }, 0);
@@ -327,8 +328,6 @@ function handleSorting() {
     }
   });
 }
-
-handleSorting();
 
 function sortShoppingList() {
   let s = [...shoppingListContainer.children];
