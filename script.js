@@ -299,12 +299,17 @@ function handleSorting() {
   shoppingListContainer.addEventListener("dragstart", (e) => {
     dragItem = e.target.closest('.shopping-row-container');
     setTimeout(() => {
-      e.target.classList.add("dragging");
+      dragItem.classList.add("dragging");
     }, 0);
 
-    e.dataTransfer.setDragImage(dragItem,0,0);
-    e.dataTransfer.setData("text/plain", "");
-    e.dataTransfer.dropeffect = "move";
+   // requestAnimationFrame(()=>{
+   //   e.dataTransfer.setDragImage(dragItem,
+   //   x,
+   //   y);
+  //  })
+    
+    //e.dataTransfer.setData("text/plain", "");
+   // e.dataTransfer.dropeffect = "move";
   });
 
   shoppingListContainer.addEventListener("dragend", (e) => {
