@@ -2,6 +2,10 @@ let shoppingListArray = load() || [];
 let dataForFilter = shoppingListArray;
 
 const shoppingListContainer = document.querySelector(".js-shopping-list-container");
+
+const sortedList = JSON.parse(localStorage.getItem("sortedList"));
+shoppingListContainer.innerHTML = sortedList;
+
 const bodyContainer = document.querySelector(".js-body-container");
 const addButton = document.querySelector(".js-add-btn");
 const inputBar = document.querySelector(".list-input");
@@ -307,6 +311,11 @@ function handleSorting() {
   shoppingListContainer.addEventListener("dragend", (e) => {
     dragItem = null;
     e.target.classList.remove("dragging");
+
+    localStorage.setItem("sortedList", JSON.stringify(shoppingListContainer.innerHTML));
+
+    
+
   });
 
   shoppingListContainer.addEventListener("dragover", (e) => {
@@ -319,11 +328,11 @@ function handleSorting() {
 
       const item = targetIndex > dragIndex ? targetItem.nextSibling : targetItem;
 
-      console.log('Target Index', targetIndex);
-      console.log('Drag Index', dragIndex);
       shoppingListContainer.insertBefore(dragItem, item);
     }
   });
 }
 
 handleSorting();
+
+
