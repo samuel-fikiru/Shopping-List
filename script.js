@@ -87,7 +87,7 @@ function renderShoppingList() {
       img.src = data.src;
       img.alt = data.alt;
       img.dataset.id = item.id;
-      img.draggable='false';
+      img.draggable = "false";
       subContainer.appendChild(img);
     });
     container.appendChild(subContainer);
@@ -303,11 +303,13 @@ function handleSorting() {
       dragItem.classList.add("dragging");
     }, 0);
 
-    // requestAnimationFrame(()=>{
-    //   e.dataTransfer.setDragImage(dragItem,
-    //   x,
-    //   y);
-    //  })
+    const rect = dragItem.getBoundingClientRect();
+    
+    requestAnimationFrame(() => {
+      e.dataTransfer.setDragImage(dragItem, 
+        e.clientX - rect.left, 
+        e.clientY - rect.top);
+    });
 
     e.dataTransfer.setData("text/plain", "");
     e.dataTransfer.dropeffect = "move";
