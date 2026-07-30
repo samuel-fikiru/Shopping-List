@@ -3,9 +3,6 @@ let dataForFilter = shoppingListArray;
 
 const shoppingListContainer = document.querySelector(".js-shopping-list-container");
 
-const sortedList = JSON.parse(localStorage.getItem("sortedList"));
-shoppingListContainer.innerHTML = sortedList;
-
 const bodyContainer = document.querySelector(".js-body-container");
 const addButton = document.querySelector(".js-add-btn");
 const inputBar = document.querySelector(".list-input");
@@ -312,10 +309,8 @@ function handleSorting() {
     dragItem = null;
     e.target.classList.remove("dragging");
 
-    localStorage.setItem("sortedList", JSON.stringify(shoppingListContainer.innerHTML));
-
-    
-
+    sortShoppingList();
+    save();
   });
 
   shoppingListContainer.addEventListener("dragover", (e) => {
@@ -335,4 +330,21 @@ function handleSorting() {
 
 handleSorting();
 
+function sortShoppingList() {
+  let s = [...shoppingListContainer.children];
 
+  let sortedArray = [];
+  s.forEach((l) => {
+    shoppingListArray.forEach((arr) => {
+      if (l.textContent === arr.itemName) {
+        const newObj = {
+          itemName: l.textContent,
+          id: arr.id,
+          checkStatus: arr.checkStatus,
+        };
+        sortedArray.push(newObj);
+      }
+    });
+  });
+  shoppingListArray = sortedArray;
+}
