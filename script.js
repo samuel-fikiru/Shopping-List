@@ -87,6 +87,7 @@ function renderShoppingList() {
       img.src = data.src;
       img.alt = data.alt;
       img.dataset.id = item.id;
+      img.draggable='false';
       subContainer.appendChild(img);
     });
     container.appendChild(subContainer);
@@ -297,24 +298,24 @@ function editItem() {
 function handleSorting() {
   let dragItem = null;
   shoppingListContainer.addEventListener("dragstart", (e) => {
-    dragItem = e.target.closest('.shopping-row-container');
+    dragItem = e.target.closest(".shopping-row-container");
     setTimeout(() => {
       dragItem.classList.add("dragging");
     }, 0);
 
-   // requestAnimationFrame(()=>{
-   //   e.dataTransfer.setDragImage(dragItem,
-   //   x,
-   //   y);
-  //  })
-    
-    //e.dataTransfer.setData("text/plain", "");
-   // e.dataTransfer.dropeffect = "move";
+    // requestAnimationFrame(()=>{
+    //   e.dataTransfer.setDragImage(dragItem,
+    //   x,
+    //   y);
+    //  })
+
+    e.dataTransfer.setData("text/plain", "");
+    e.dataTransfer.dropeffect = "move";
   });
 
   shoppingListContainer.addEventListener("dragend", (e) => {
-    dragItem = null;
     e.target.classList.remove("dragging");
+    dragItem = null;
 
     sortShoppingList();
     save();
