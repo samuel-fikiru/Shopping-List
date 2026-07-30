@@ -38,7 +38,6 @@ function addItem() {
     checkStatus: 0,
   };
   shoppingListArray.push(newObj);
-  console.log(shoppingListArray);
   save();
   render();
 }
@@ -51,7 +50,7 @@ function renderShoppingList() {
     const itemName = item.itemName;
     const container = document.createElement("div");
     container.className = "shopping-row-container";
-    container.draggable='true';
+    container.draggable = "true";
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.className = "checkbox js-checkbox";
@@ -293,38 +292,38 @@ function editItem() {
   });
 }
 
+function handleSorting() {
+  let dragItem = null;
+  shoppingListContainer.addEventListener("dragstart", (e) => {
+    dragItem = e.target;
+    setTimeout(() => {
+      e.target.classList.add("dragging");
+    }, 0);
 
-function handleSorting(){
+    e.dataTransfer.setData("text/plain", "");
+    e.dataTransfer.dropeffect = "move";
+  });
 
-let dragItem = null;
-shoppingListContainer.addEventListener('dragstart', (e)=>{
-  dragItem = e.target;
-  setTimeout(()=>{
-    e.target.classList.add('dragging');
-  },0);
+  shoppingListContainer.addEventListener("dragend", (e) => {
+    dragItem = null;
+    e.target.classList.remove("dragging");
+  });
 
-  e.dataTransfer.setData("text/plain", "");
-  e.dataTransfer.dropeffect='move';
-})
+  shoppingListContainer.addEventListener("dragover", (e) => {
+    e.preventDefault();
 
-shoppingListContainer.addEventListener('dragend', (e)=>{
-  dragItem=null;
-  e.target.classList.remove('dragging');
-})
+    const targetItem = e.target.closest(".shopping-row-container");
+    if (targetItem && targetItem !== dragItem) {
+      const dragIndex = [...shoppingListContainer.children].indexOf(dragItem);
+      const targetIndex = [...shoppingListContainer.children].indexOf(targetItem);
 
-shoppingListContainer.addEventListener('dragover',(e)=>{
-  e.preventDefault();
+      const item = targetIndex > dragIndex ? targetItem.nextSibling : targetItem;
 
-  const target = e.target.closest('.shopping-row-container');
-  if (target && target!==dragItem){
-    const dragIndex = [...shoppingListContainer.children].indexOf(dragItem);
-    const targetIndex = [...shoppingListContainer.children].indexOf(dragItem);
-
-    const item = (targetIndex > dragIndex)? target.nextSibling : target;
-
-    shoppingListContainer.insertBefore(dragItem, item)
-  }
-})
+      console.log('Target Index', targetIndex);
+      console.log('Drag Index', dragIndex);
+      shoppingListContainer.insertBefore(dragItem, item);
+    }
+  });
 }
 
 handleSorting();
