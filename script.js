@@ -302,6 +302,7 @@ function handleSorting() {
       e.target.classList.add("dragging");
     }, 0);
 
+    e.dataTransfer.setDragImage(dragItem,0,0);
     e.dataTransfer.setData("text/plain", "");
     e.dataTransfer.dropeffect = "move";
   });
