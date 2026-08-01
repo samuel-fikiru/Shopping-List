@@ -49,7 +49,7 @@ function addItem() {
 }
 
 function renderShoppingList() {
-  hideControlForShoopingList();
+  hideControlForShoppingList();
 
   shoppingListContainer.innerHTML = "";
   dataForFilter.forEach((item) => {
@@ -69,7 +69,7 @@ function renderShoppingList() {
     container.appendChild(p);
     const subContainer = document.createElement("div");
     subContainer.className = "icons-container";
-    imgArray = [
+    const imgArray = [
       {
         class: "drag-icon",
         src: "icons/drag.png",
@@ -165,7 +165,7 @@ function hideControlForNoItem() {
   shoppingListContainer.style.display = "none";
 }
 
-function hideControlForShoopingList() {
+function hideControlForShoppingList() {
   filtersContainer.style.display = "block";
   shoppingListContainer.style.display = "flex";
   clearButtonsContainer.style.display = "block";
