@@ -209,9 +209,7 @@ function renderCheck() {
         if (itemObj.id === boxId && !box.checked) {
           box.classList.add('checked-box');
           box.checked = true;
-          
-          console.log(box)
-        }
+                  }
       });
     } else {
       buyItems.forEach((item) => {
