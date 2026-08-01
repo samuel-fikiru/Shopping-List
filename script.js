@@ -22,8 +22,13 @@ inputBar.addEventListener("keydown", (event) => {
   }
 });
 addButton.addEventListener("click", () => {
-  addItem();
+  if (inputBar.value != ""){
+    addItem();
   inputBar.value = "";
+  }
+  else{
+    inputBar.placeholder ='Please write Something..';
+  }
 });
 
 clearAllBtn.addEventListener("click", () => {
