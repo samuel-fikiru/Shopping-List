@@ -13,6 +13,8 @@ const noItemMsgContainer = document.querySelector(".js-no-item-container");
 const filterButtons = document.querySelectorAll(".js-filter");
 const clearBoughtBtn = document.querySelector(".js-clear-bought-btn");
 
+let currentFilter = 'All';
+
 render();
 
 inputBar.addEventListener("keydown", (event) => {
@@ -45,6 +47,7 @@ function addItem() {
   shoppingListArray.push(newObj);
   save();
   render();
+  console.log(true)
 }
 
 function renderShoppingList() {
@@ -55,7 +58,7 @@ function renderShoppingList() {
     const itemName = item.itemName;
     const container = document.createElement("div");
     container.className = "shopping-row-container";
-    container.draggable = "true";
+    container.draggable = currentFilter==='All';
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.className = "checkbox js-checkbox";
@@ -93,6 +96,14 @@ function renderShoppingList() {
       img.dataset.id = item.id;
       img.draggable = "false";
       subContainer.appendChild(img);
+      if (data.class==="drag-icon"&& currentFilter!=="All"){
+        img.style.display="none";
+      }
+      /*
+      else if (data.class==="drag-icon"&& currentFilter==="All"){
+        img.style.display="block";
+        console.log('block');
+      } */
     });
     container.appendChild(subContainer);
     shoppingListContainer.appendChild(container);
@@ -242,34 +253,23 @@ function controlFilters() {
   });
 }
 
-const shoppingRowContainer = document.querySelectorAll('.shopping-row-container');
-
 
 function decideFilter(filter) {
-  
+  currentFilter = filter;
   if (filter === "Bought") {
-    shoppingRowContainer.forEach((container)=>{
-      container.draggable=false;
-      console.log(container)
-    })
     dataForFilter = shoppingListArray.filter((item) => {
       return item.checkStatus === 1;
     });
-    render();
-    
   } else if (filter === "Not Bought") {
     dataForFilter = shoppingListArray.filter((item) => {
       return item.checkStatus === 0;
     });
-    render();
   } else {
     dataForFilter = shoppingListArray;
-    render();
-    shoppingRowContainer.forEach((container)=>{
-      container.draggable='true';
-    })
   }
+  render();
 }
+
 
 function clearBoughtOnly() {
   clearBoughtBtn.addEventListener("click", () => {
@@ -319,6 +319,10 @@ function editItem() {
 function handleSorting() {
   let dragItem = null;
   shoppingListContainer.addEventListener("dragstart", (e) => {
+    if (currentFilter!='All'){
+      e.preventDefault();
+      return;
+    }
     dragItem = e.target.closest(".shopping-row-container");
     setTimeout(() => {
       dragItem.classList.add("dragging");
@@ -332,7 +336,6 @@ function handleSorting() {
 
     e.dataTransfer.setData("text/plain", "");
     e.dataTransfer.dropeffect = "move";
-
   });
 
   shoppingListContainer.addEventListener("dragend", (e) => {
@@ -356,7 +359,6 @@ function handleSorting() {
       shoppingListContainer.insertBefore(dragItem, item);
     }
   });
-
 }
 
 function sortShoppingList() {
@@ -382,13 +384,12 @@ function sortShoppingList() {
   });
 }
 
-function isAllFilter(){
+function isAllFilter() {
   ifYes = null;
-  filterButtons.forEach((button) =>{
-      if (button.classList.contains('clickedFilter')){
-        ifYes = true;
-      }
-    })
-    return ifYes; 
+  filterButtons.forEach((button) => {
+    if (button.classList.contains("clickedFilter")) {
+      ifYes = true;
+    }
+  });
+  return ifYes;
 }
-
