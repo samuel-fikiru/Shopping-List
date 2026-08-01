@@ -347,8 +347,9 @@ function sortShoppingList() {
 
   let sortedArray = [];
   s.forEach((l) => {
+    const lId = Number(l.querySelector('.js-things-to-buy').dataset.id);
     shoppingListArray.forEach((arr) => {
-      if (l.textContent === arr.itemName) {
+      if (lId === arr.id) {
         const newObj = {
           itemName: l.textContent,
           id: arr.id,
