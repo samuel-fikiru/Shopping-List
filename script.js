@@ -22,12 +22,11 @@ inputBar.addEventListener("keydown", (event) => {
   }
 });
 addButton.addEventListener("click", () => {
-  if (inputBar.value != ""){
+  if (inputBar.value != "") {
     addItem();
-  inputBar.value = "";
-  }
-  else{
-    inputBar.placeholder ='Please write Something..';
+    inputBar.value = "";
+  } else {
+    inputBar.placeholder = "Please write Something..";
   }
 });
 
@@ -51,7 +50,7 @@ function addItem() {
 function renderShoppingList() {
   hideControlForShoppingList();
 
-  shoppingListContainer.innerHTML = "";
+  shoppingListContainer.replaceChildren();
   dataForFilter.forEach((item) => {
     const itemName = item.itemName;
     const container = document.createElement("div");
@@ -274,29 +273,33 @@ function clearBoughtOnly() {
 function editItem() {
   const editIcons = document.querySelectorAll(".js-edit-icon");
   const saveButton = document.querySelector(".js-save-btn");
+  let iconId = null;
   editIcons.forEach((icon) => {
     icon.addEventListener("click", () => {
-      const iconId = Number(icon.dataset.id);
+      iconId = Number(icon.dataset.id);
       shoppingListArray.forEach((item) => {
         if (item.id === iconId) {
           inputBar.value = item.itemName;
           inputBar.focus();
           addButton.style.display = "none";
           saveButton.style.display = "flex";
-
-          const itemIndex = Number(icon.dataset.id);
-          saveButton.addEventListener("click", () => {
-            shoppingListArray[itemIndex].itemName = inputBar.value;
-            inputBar.value = "";
-            inputBar.focus();
-            save();
-            dataForFilter = shoppingListArray;
-            addButton.style.display = "flex";
-            saveButton.style.display = "none";
-            render();
-          });
         }
       });
+    });
+  });
+  saveButton.addEventListener("click", () => {
+    shoppingListArray.forEach((item) => {
+      if (item.id === iconId) {
+        item.itemName = inputBar.value;
+        iconId = null;
+        inputBar.value = "";
+        inputBar.focus();
+        save();
+        dataForFilter = shoppingListArray;
+        addButton.style.display = "flex";
+        saveButton.style.display = "none";
+        render();
+      }
     });
   });
 }
@@ -347,7 +350,7 @@ function sortShoppingList() {
 
   let sortedArray = [];
   s.forEach((l) => {
-    const lId = Number(l.querySelector('.js-things-to-buy').dataset.id);
+    const lId = Number(l.querySelector(".js-things-to-buy").dataset.id);
     shoppingListArray.forEach((arr) => {
       if (lId === arr.id) {
         const newObj = {
