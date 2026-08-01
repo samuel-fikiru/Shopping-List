@@ -55,7 +55,10 @@ p {
 }
 
 .list-input:focus {
-  outline: none;
+  outline-width: 1px;
+  outline-color: rgb(63, 22, 43);
+  outline-style: solid;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .add-btn,
