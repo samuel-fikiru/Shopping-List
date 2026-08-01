@@ -242,12 +242,21 @@ function controlFilters() {
   });
 }
 
+const shoppingRowContainer = document.querySelectorAll('.shopping-row-container');
+
+
 function decideFilter(filter) {
+  
   if (filter === "Bought") {
+    shoppingRowContainer.forEach((container)=>{
+      container.draggable=false;
+      console.log(container)
+    })
     dataForFilter = shoppingListArray.filter((item) => {
       return item.checkStatus === 1;
     });
     render();
+    
   } else if (filter === "Not Bought") {
     dataForFilter = shoppingListArray.filter((item) => {
       return item.checkStatus === 0;
@@ -256,6 +265,9 @@ function decideFilter(filter) {
   } else {
     dataForFilter = shoppingListArray;
     render();
+    shoppingRowContainer.forEach((container)=>{
+      container.draggable='true';
+    })
   }
 }
 
@@ -320,6 +332,7 @@ function handleSorting() {
 
     e.dataTransfer.setData("text/plain", "");
     e.dataTransfer.dropeffect = "move";
+
   });
 
   shoppingListContainer.addEventListener("dragend", (e) => {
@@ -343,6 +356,7 @@ function handleSorting() {
       shoppingListContainer.insertBefore(dragItem, item);
     }
   });
+
 }
 
 function sortShoppingList() {
@@ -367,3 +381,14 @@ function sortShoppingList() {
     if (button.classList.contains("clickedFilter") && button.innerHTML === "All") shoppingListArray = sortedArray;
   });
 }
+
+function isAllFilter(){
+  ifYes = null;
+  filterButtons.forEach((button) =>{
+      if (button.classList.contains('clickedFilter')){
+        ifYes = true;
+      }
+    })
+    return ifYes; 
+}
+
