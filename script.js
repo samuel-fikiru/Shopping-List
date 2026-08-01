@@ -13,7 +13,7 @@ const noItemMsgContainer = document.querySelector(".js-no-item-container");
 const filterButtons = document.querySelectorAll(".js-filter");
 const clearBoughtBtn = document.querySelector(".js-clear-bought-btn");
 
-let currentFilter = 'All';
+let currentFilter = "All";
 
 render();
 
@@ -47,7 +47,7 @@ function addItem() {
   shoppingListArray.push(newObj);
   save();
   render();
-  console.log(true)
+  console.log(true);
 }
 
 function renderShoppingList() {
@@ -58,7 +58,7 @@ function renderShoppingList() {
     const itemName = item.itemName;
     const container = document.createElement("div");
     container.className = "shopping-row-container";
-    container.draggable = currentFilter==='All';
+    container.draggable = currentFilter === "All";
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.className = "checkbox js-checkbox";
@@ -96,14 +96,12 @@ function renderShoppingList() {
       img.dataset.id = item.id;
       img.draggable = "false";
       subContainer.appendChild(img);
-      if (data.class==="drag-icon"&& currentFilter!=="All"){
-        img.style.display="none";
+      if (data.class === "drag-icon" && currentFilter !== "All") {
+        img.style.display = "none";
+      } else if (data.class === "drag-icon" && currentFilter === "All") {
+        img.style.display = "block";
+        console.log("block");
       }
-      /*
-      else if (data.class==="drag-icon"&& currentFilter==="All"){
-        img.style.display="block";
-        console.log('block');
-      } */
     });
     container.appendChild(subContainer);
     shoppingListContainer.appendChild(container);
@@ -148,9 +146,9 @@ function deleteItem() {
       });
 
       shoppingListArray = newArray;
-      dataForFilter = newArray;
+      dataForFilter = shoppingListArray;
       save();
-      render();
+      decideFilter(currentFilter);
     });
   });
 }
@@ -238,9 +236,10 @@ function renderCheck() {
   });
 }
 
+const allFilterBtn = document.querySelector(".js-all-filter");
+allFilterBtn.classList.add("clickedFilter");
+
 function controlFilters() {
-  const allFilterBtn = document.querySelector(".js-all-filter");
-  allFilterBtn.classList.add("clickedFilter");
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       decideFilter(button.innerHTML);
@@ -252,7 +251,6 @@ function controlFilters() {
     });
   });
 }
-
 
 function decideFilter(filter) {
   currentFilter = filter;
@@ -269,7 +267,6 @@ function decideFilter(filter) {
   }
   render();
 }
-
 
 function clearBoughtOnly() {
   clearBoughtBtn.addEventListener("click", () => {
@@ -319,7 +316,7 @@ function editItem() {
 function handleSorting() {
   let dragItem = null;
   shoppingListContainer.addEventListener("dragstart", (e) => {
-    if (currentFilter!='All'){
+    if (currentFilter != "All") {
       e.preventDefault();
       return;
     }
