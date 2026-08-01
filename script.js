@@ -35,7 +35,7 @@ clearAllBtn.addEventListener("click", () => {
 function addItem() {
   const newObj = {
     itemName: `${inputBar.value}`,
-    id: shoppingListArray.length,
+    id: Date.now(),
     checkStatus: 0,
   };
   shoppingListArray.push(newObj);
