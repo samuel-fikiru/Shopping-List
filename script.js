@@ -207,7 +207,10 @@ function renderCheck() {
         const boxId = Number(box.dataset.id);
 
         if (itemObj.id === boxId && !box.checked) {
+          box.classList.add('checked-box');
           box.checked = true;
+          
+          console.log(box)
         }
       });
     } else {
