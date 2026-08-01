@@ -207,9 +207,9 @@ function renderCheck() {
         const boxId = Number(box.dataset.id);
 
         if (itemObj.id === boxId && !box.checked) {
-          box.classList.add('checked-box');
+          box.classList.add("checked-box");
           box.checked = true;
-                  }
+        }
       });
     } else {
       buyItems.forEach((item) => {
@@ -236,7 +236,6 @@ function controlFilters() {
       button.classList.add("clickedFilter");
     });
   });
-  
 }
 
 function decideFilter(filter) {
@@ -306,11 +305,9 @@ function handleSorting() {
     }, 0);
 
     const rect = dragItem.getBoundingClientRect();
-    
+
     requestAnimationFrame(() => {
-      e.dataTransfer.setDragImage(dragItem, 
-        e.clientX - rect.left, 
-        e.clientY - rect.top);
+      e.dataTransfer.setDragImage(dragItem, e.clientX - rect.left, e.clientY - rect.top);
     });
 
     e.dataTransfer.setData("text/plain", "");
@@ -356,10 +353,8 @@ function sortShoppingList() {
       }
     });
   });
-  
-  filterButtons.forEach((button)=>{
-  if (button.classList.contains('clickedFilter') && button.innerHTML==='All')
-    shoppingListArray = sortedArray;
-})
-}
 
+  filterButtons.forEach((button) => {
+    if (button.classList.contains("clickedFilter") && button.innerHTML === "All") shoppingListArray = sortedArray;
+  });
+}

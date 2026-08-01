@@ -268,7 +268,7 @@ p {
 }
 .bought {
   text-decoration: line-through;
-  opacity:0.4;
+  opacity: 0.4;
 }
 
 .dragging {
@@ -279,6 +279,6 @@ p {
 .dragging > * {
   display: none;
 }
-.checked-box{
+.checked-box {
   opacity: 0.4;
 }
