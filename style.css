@@ -240,6 +240,10 @@ p {
   color: rgba(0, 0, 0, 0.5);
   font-family: "Montserrat", sans-serif;
 }
+.clear-all-btn:hover,
+.clear-bought-btn:hover{
+  color: rgb(22, 22, 48);
+}
 .no-item-container {
   background: #28d4f7;
   background: linear-gradient(90deg, rgb(42, 45, 156) 0%, rgba(14, 222, 250, 0.99) 100%);
