@@ -235,6 +235,7 @@ function controlFilters() {
       button.classList.add("clickedFilter");
     });
   });
+  
 }
 
 function decideFilter(filter) {
@@ -354,5 +355,10 @@ function sortShoppingList() {
       }
     });
   });
-  shoppingListArray = sortedArray;
+  
+  filterButtons.forEach((button)=>{
+  if (button.classList.contains('clickedFilter') && button.innerHTML==='All')
+    shoppingListArray = sortedArray;
+})
 }
+
